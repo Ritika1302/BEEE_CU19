@@ -1,0 +1,25 @@
+const int trigPin=9;
+const int echoPin=10;
+int bellPin=3;
+long duration;
+
+void setup()
+{
+pinMode(9,LOW);
+pinMode(10,INPUT);
+Serial.begin(9600);
+}
+
+void loop()
+{
+digitalWrite(9,LOW);
+delayMicroseconds(2);
+digitalWrite(9,HIGH);
+delayMicroseconds(10);
+digitalWrite(9,LOW);
+
+int d=pulseIn(10,HIGH);
+int t=(d*0.034)/2;
+Serial.println(t);
+analogWrite(5,t);
+}
